@@ -31,14 +31,19 @@
          }
          summary {
          text-decoration: underline dotted #666;
+         list-style: none;
+         outline: none; 
+         cursor: context-menu;
          }
 
-         summary {
-          cursor: context-menu;
-         }
+         summary::-webkit-details-marker { display: none; }
          .list {
          margin-block: .3em;
          }
+
+         summary::before { content: "> "; }
+
+         details[open] summary::before { content: "v "; }
 
          .list > li {
           margin-block: .5rem;
