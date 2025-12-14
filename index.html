@@ -41,9 +41,20 @@
          margin-block: .3em;
          }
 
-         summary::before { content: "> "; }
+         summary::before {
+  content: "";
+  display: inline-block;
+  width: 0; height: 0;
+  border-left: 6px solid currentColor;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  margin-right: .5em;
+  transform: translateY(1px);
+}
 
-         details[open] summary::before { content: "v "; }
+details[open] summary::before {
+  transform: rotate(90deg) translateY(-1px);
+}
 
          .list > li {
           margin-block: .5rem;
