@@ -1,119 +1,624 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Joe Gelman | PMM for B2B Tech</title>
-      <link rel="icon" type="image/x-icon" href="/favicon.ico">
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-      <link rel="manifest" href="/site.webmanifest">
-      <style>
-         @font-face {
-    font-family: 'Arial';
-    src: url('fonts/Arial-Black.woff2') format('woff2'),
-        url('fonts/Arial-Black.woff') format('woff');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
-}
-         *, *::before, *::after {
-         box-sizing: border-box;
-         }
-         * {
-         margin: 0;
-         -webkit-font-smoothing: antialiased;
-         }
-         body {
-         font-family: Helvetica, Arial, Sans-Serif;
-         font-size: 1.4em;
-         }
-         main {
-         max-width: 60ch;
-         margin-inline: auto;
-         margin-top: 4rem;
-         display: flex;
-         flex-direction: row;
-         gap: 2rem;
-         }
-         summary {
-         text-decoration: underline dotted #666;
-         list-style: none;
-         outline: none; 
-         cursor: context-menu;
-         }
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GLMN•CO</title>
 
-         summary::-webkit-details-marker { display: none; }
-         .list {
-         margin-block: .3em;
-         }
+  <style>
+    :root {
+      --dux-color: #f39;
+      --geo-color: #03f;
+      --rskd-color: #066;
+      --cyera-color: #6f9;
+      --wsc-color: #ef0;
+      --vulcan-color: #f5ece3;
+      --overwolf-color: #000;
+      --sw-color: #06f;
+      --paper-color: #f7f7f2;
+      --ink-color: #111;
+      --muted-opacity: 0.55;
+      --rule-opacity: 0.25;
+      --page-width: 100ch;
+      --card-min: 22rem;
+      --image-height: 25rem;
+      --space: 1rem;
+    }
 
-         summary::before {
-  content: "";
-  display: inline-block;
-  width: 0; height: 0;
-  border-left: 12px solid currentColor;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  margin-right: .5em;
-  margin-bottom: 3px;
-  transform: translateY(1px);
-}
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
 
-.logo {
-   font-family: Arial;
-   font-weight: 900;
-}
+    *:not(dialog) {
+      margin: 0;
+    }
 
-details[open] summary::before {
-  transform: rotate(90deg) translateY(-1px);
-}
+    html {
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
-         .list > li {
-          margin-block: .5rem;
-         }
-         @media only screen and (max-width: 600px) {
-         main {
-         width: auto;
-         margin-inline: 1rem;
-         flex-direction: column;
-         }
-        }
-      </style>
-   </head>
-   <body>
-      <main>
-         <header>
-            <strong class="logo">JOE GELMAN</strong>
-            <p class="logo">PMM for B2B Tech</p>
-         </header>
-         <section>
-            <details name="toggle">
-               <summary>Skills:</summary>
-               <ul class="list">
-                  <li>Positioning</li>
-                  <ul>
-                     <li>Strategy</li>
-                     <li>Category</li>
-                     <li>Hierarchy</li>
-                  </ul>
-                  <li>Messaging</li>
-                  <ul>
-                     <li>Narrative</li>
-                     <li>Tagline</li>
-                     <li>Copywriting</li>
-                  </ul>
-               </ul>
-            </details>
-            <details name="toggle">
-               <summary>Contact:</summary>
-               <ul class="list">
-                  <li>joe@glmn.co</li>
-                  <li>862 400 3170</li>
-               </ul>
-            </details>
-         </section>
-      </main>
-   </body>
+    body {
+      max-width: var(--page-width);
+      margin-inline: auto;
+      padding: 2rem 1rem;
+      background: var(--paper-color);
+      color: var(--ink-color);
+      font-family: "Univers Next Pro", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.35;
+    }
+
+    img,
+    picture,
+    video,
+    canvas,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      overflow-wrap: break-word;
+    }
+
+    p {
+      text-wrap: pretty;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      text-wrap: balance;
+    }
+
+    header {
+      margin-block: 0 3rem;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      margin-block: 0 0.5rem;
+      font-size: clamp(1.35rem, 3vw, 1.85rem);
+      line-height: 1;
+      letter-spacing: -0.035em;
+    }
+
+    .subtitle {
+      margin-top: 0.25rem;
+      font-size: 1rem;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--card-min)), 1fr));
+      gap: var(--space);
+    }
+
+    .entry {
+      position: relative;
+      display: grid;
+      align-content: end;
+      min-height: 14rem;
+      padding: var(--space);
+      overflow: hidden;
+      background: white;
+      color: var(--ink-color);
+    }
+
+    .entry--dark {
+      color: white;
+    }
+
+    .entry--dux { background: var(--dux-color); }
+    .entry--geo { background: var(--geo-color); }
+    .entry--rskd { background: var(--rskd-color); }
+    .entry--cyera { background: var(--cyera-color); }
+    .entry--wsc { background: var(--wsc-color); }
+    .entry--vulcan { background: var(--vulcan-color); }
+    .entry--overwolf { background: var(--overwolf-color); }
+    .entry--sw { background: var(--sw-color); }
+
+    .client-logo {
+      position: absolute;
+      top: var(--space);
+      left: var(--space);
+      z-index: 2;
+      width: auto;
+      height: 1.5rem;
+    }
+
+    .client-logo--large {
+      height: 2rem;
+    }
+
+    .image-panel {
+      min-height: var(--image-height);
+      margin-bottom: var(--space);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .image-panel--dux {
+      background-image: url("/heroes/dux.png");
+      background-position: bottom;
+      background-size: 90%;
+    }
+
+    .image-panel--geo {
+      background-image: url("/heroes/geo.png");
+    }
+
+    .image-panel--rskd {
+      background-image: url("/heroes/rskd.webp");
+      background-size: 150%;
+    }
+
+    .image-panel--cyera {
+      background-image: url("/heroes/cyera.png");
+      background-size: 130%;
+    }
+
+    .image-panel--wsc {
+      background-image: url("/heroes/wsc.png");
+      background-size: 100%;
+    }
+
+    .image-panel--vulcan {
+      /* Replace this local placeholder with a hosted image when publishing. */
+      background-image: url("/heroes/vulcan.png");
+      background-size: 100%;
+    }
+
+    .image-panel--overwolf {
+      background-image: url("/heroes/overwolf.png");
+      background-size: 110%;
+    }
+
+    .image-panel--sw {
+      background-image: url("/heroes/sw.png");
+      background-position: bottom;
+      background-size: 120%;
+    }
+
+    .strapline {
+      margin-bottom: var(--space);
+      max-width: 38rem;
+    }
+
+    .meta {
+      opacity: var(--muted-opacity);
+      font-family: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.65rem;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px dotted currentColor;
+      margin-block: var(--space);
+      opacity: var(--rule-opacity);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>GLMN•CO</h1>
+    <p class="subtitle">Positioning and narrative for technical products.</p>
+  </header>
+
+  <main>
+    <section class="entry entry--dux">
+      <img src="/logos/dux.svg" alt="Dux" class="client-logo">
+      <div class="image-panel image-panel--dux" aria-hidden="true"></div>
+      <div class="desc">
+        <h2>Safety at machine speed</h2>
+        <p class="strapline">AI-driven security response built for a world where attackers move faster than people can.</p>
+        <hr>
+        <p class="meta">[Positioning] [Narrative] [Category creation]</p>
+      </div>
+    </section>
+
+    <section class="entry entry--geo entry--dark">
+      <img src="/logos/geo.svg" alt="GeoComply" class="client-logo">
+      <div class="image-panel image-panel--geo" aria-hidden="true"></div>
+      <div class="desc">
+        <h2>Do more with where</h2>
+        <p class="strapline">Turned location from a compliance checkbox into a core trust and fraud signal.</p>
+        <hr>
+        <p class="meta">[Positioning] [Messaging] [Trust]</p>
+      </div>
+    </section>
+
+    <section class="entry entry--rskd entry--dark">
+      <img src="/logos/rskd.svg" alt="Riskified" class="client-logo">
+      <div class="image-panel image-panel--rskd" aria-hidden="true"></div>
+      <div class="desc">
+        <h2>Reward the right customers</h2>
+        <p class="strapline">Reframed policy abuse as a customer experience and retention problem, not just a fraud problem.</p>
+        <hr>
+        <p class="meta">[Positioning] [GTM] [Enablement]</p>
+      </div>
+    </section>
+
+    <section class="entry entry--cyera">
+      <img src="/logos/cyera.svg" alt="Cyera" class="client-logo">
+      <div class="image-panel image-panel--cyera" aria-hidden="true"></div>
+      <div class="desc">
+        <h2>Cloud data reality</h2>
+        <p class="strapline">Defined cloud data security around understanding the data itself, not just the surrounding infrastructure.</p>
+        <hr>
+        <p class="meta">[Positioning] [Category creation] [Homepage]</p>
+      </div>
+    </section>
+
+    <section class="entry entry--wsc">
+      <img src="/logos/wsc.svg" alt="WSC Sports" class="client-logo">
+      <div class="image-panel image-panel--wsc" aria-hidden="true"></div>
+      <div class="desc">
+        <h2>Fuel the fandom</h2>
+        <p class="strapline">Repositioned sports automation around keeping fans connected to the moments that matter.</p>
+        <hr>
+        <p class="meta">[Narrative] [Messaging] [Brand]</p>
+      </div>
+    </section>
+
+    <section class="entry entry--vulcan">
+      <img src="/logos/vulcan.svg" alt="Vulcan" class="client-logo">
+      <div class="image-panel image-panel--vulcan" aria-hidden="true"></div>
+      <div class="desc">
+        <h2>Fix strong and prosper</h2>
+        <p class="strapline">Shifted vulnerability management from finding problems to actually fixing them.</p>
+        <hr>
+        <p class="meta">[Positioning] [Web copy] [Employer brand]</p>
+      </div>
+    </section>
+
+    <section class="entry entry--overwolf entry--dark">
+      <img src="/logos/overwolf.svg" alt="Overwolf" class="client-logo client-logo--large">
+      <div class="image-panel image-panel--overwolf" aria-hidden="true"></div>
+      <div class="desc">
+        <h2>Up the game</h2>
+        <p class="strapline">Positioned gaming creators and modders as the engine behind modern game communities.</p>
+        <hr>
+        <p class="meta">[Messaging] [Community] [Web copy]</p>
+      </div>
+    </section>
+
+    <section class="entry entry--sw entry--dark">
+      <img src="/logos/sw.svg" alt="Similarweb" class="client-logo">
+      <div class="image-panel image-panel--sw" aria-hidden="true"></div>
+      <div class="desc">
+        <h2>Great data. And lots of it.</h2>
+        <p class="strapline">Turned internet-scale data collection into a story about market visibility and competitive advantage.</p>
+        <hr>
+        <p class="meta">[Positioning] [Data/Infrastructure] [Web copy]</p>
+      </div>
+    </section>
+
+    <section class="entry">
+      <div class="desc">
+        <h2>Relax. IT’s taken care of.</h2>
+        <p class="strapline">Made IT automation feel simple, human, and reassuring instead of technical and corporate.</p>
+        <hr>
+        <p class="meta">[Brand voice] [Web copy]</p>
+      </div>
+    </section>
+
+    <section class="entry">
+      <div class="desc">
+        <h2>Move like a startup. Work like an enterprise.</h2>
+        <p class="strapline">Framed workforce mobility as a new way for organizations to operate and grow.</p>
+        <hr>
+        <p class="meta">[Narrative] [Future of work] [Web copy]</p>
+      </div>
+    </section>
+
+    <section class="entry">
+      <div class="desc">
+        <h2>Save drivers. Drive savings.</h2>
+        <p class="strapline">Unified driver safety and insurance savings into a single clear story.</p>
+        <hr>
+        <p class="meta">[MDGO: Insurtech] | [Positioning] [Tagline] [Web copy]</p>
+      </div>
+    </section>
+
+    <section class="entry">
+      <div class="desc">
+        <h2>Change with confidence.</h2>
+        <p class="strapline">Simplified enterprise change management into a story about visibility and foresight.</p>
+        <hr>
+        <p class="meta">[Panaya: Enterprise Software] | [Messaging] [Web copy]</p>
+      </div>
+    </section>
+
+    <section class="entry">
+      <div class="desc">
+        <h2>Retail has a new trick up its sleeve.</h2>
+        <p class="strapline">Made connected retail feel tangible, accessible, and built into the physical store itself.</p>
+        <hr>
+        <p class="meta">[Nexite: Retail Technology] | [Narrative] [Launch messaging]</p>
+      </div>
+    </section>
+  </main>
+</body>
 </html>
+
+
+
+<!-- <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GLMN•CO</title>
+<style>
+
+  :root {
+	--dux-color: #f39;
+	--geo-color: #03f;
+ 	--rskd-color: #066;
+	--cyera-color: #6f9;
+	--wsc-color: #ef0;
+    --vulcan-color: #f5ece3;
+    --overwolf-color: #000;
+    --sw-color: #06f;
+  }
+
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+*:not(dialog) {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+
+/* 6. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+  body {
+    font-family: "Univers Next Pro";
+    margin-inline: auto;
+    max-width: 100ch;
+-webkit-font-smoothing: antialiased;
+  }
+
+  span {
+    font-family: "Berkeley Mono";
+    font-size: .65rem;
+  }
+
+  .entry {
+    padding: 1rem;
+    position: relative;
+  }
+
+  .desc h2 {
+    margin-block: .5rem .5rem;
+  }
+
+  header {
+
+	margin-block: 2rem 3rem;
+  }
+
+  .strapline {
+	margin-bottom: 1rem;  
+
+  }
+
+  .img {
+    margin-bottom: 1rem;
+    }
+
+  .meta {
+        opacity: 0.5;
+    }
+
+  hr {
+    border: 1px dotted;
+color: inherit;
+    margin-block: 1rem;
+    opacity: 0.25;
+    
+  }
+
+.client_logo {
+    position: absolute;
+    height: 1.5rem;
+    left: 1rem;
+}
+
+
+.small {
+    height: 2rem;
+}
+
+
+  main {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+</style>  
+</head>
+
+<body>
+  <header>
+    <h1>GLMN•CO</h1>
+    <p class="subtitle">Positioning and narrative for technical products.</p>
+</header>
+
+  <main>
+    <section class="entry" style="background-color: var(--dux-color); ">
+    <img src="file:///home/joe/Desktop/dux.svg" class="client_logo">
+      <div class="dux img" style="background-image: url('https://i.ibb.co/JWq3YNph/dux.png'); height: 400px;  background-position: bottom; background-size: 90%; background-repeat: no-repeat;"></div>
+    <div class="desc"><h2>Safety at machine speed</h2>
+    
+	<p class="strapline">AI-driven security response built for a world where attackers move faster than people can.</p>
+    <hr>
+  <p class="meta"><span class="company">[DUX: Cybersecurity]</span> | <span class="tag">[Positioning]</span> <span class="tag">[Narrative]</span> <span class="tag">[Category creation]</span></p> </div>
+
+    </section>
+
+    <section class="entry" style="background-color: var(--geo-color); color: white;">
+    <img src="file:///home/joe/Desktop/geo.svg" class="client_logo">
+     <div class="geo img" style="background-image: url('https://www.geocomply.com/wp-content/uploads/Ph1-Product-Page-GeoGuard-01.svg'); height: 400px; background-size: cover;"></div>
+      <div class="desc"><h2>Do more with where</h2>
+      <p class="strapline">Turned location from a compliance checkbox into a core trust and fraud signal.</p>
+    <hr>
+      <p class="meta"><span class="company">[GeoComply: Fraud &amp; Identity]</span> | <span class="tag">[Positioning]</span> <span class="tag">[Messaging]</span> <span class="tag">[Trust]</span></p>
+    </section></div>
+
+    <section class="entry" style="background-color: var(--rskd-color); color: white;">
+<img src="file:///home/joe/Desktop/rskd.svg" class="client_logo">
+        <div class="rskd img" style="background-image: url('https://www.riskified.com/app/uploads/2025/03/Riskified-Blog-Risk-Rundown-Sneakers.png'); height: 400px; background-size: 150%; background-position: center;  background-repeat: no-repeat;"></div>
+      <div class="desc"><h2>Reward the right customers</h2>
+      <p class="strapline">Reframed policy abuse as a customer experience and retention problem, not just a fraud problem.</p>
+<hr>
+      <p class="meta"><span class="company">[Riskified: Fraud &amp; Ecommerce]</span> | <span class="tag">[Positioning]</span> <span class="tag">[GTM]</span> <span class="tag">[Enablement]</span></p></div>
+    </section>
+
+
+
+    <section class="entry" style="background-color: var(--cyera-color);">
+    <img src="file:///home/joe/Desktop/cyera.svg" class="client_logo">
+    <div class="cyera img" style="background-image: url('https://i.ibb.co/YHQQ9NR/69d7d5dda8a8e6fcaf24edd6-automated-remediation.png'); height: 400px; background-size: 130%; background-position: center;  background-repeat: no-repeat;"></div>
+      <div class="desc"><h2>Cloud data reality</h2>
+      <p class="strapline">Defined cloud data security around understanding the data itself, not just the surrounding infrastructure.</p>
+        <hr>
+      <p class="meta"><span class="company">[Cyera: Cybersecurity]</span> | <span class="tag">[Positioning]</span> <span class="tag">[Category creation]</span> <span class="tag">[Homepage]</span></p></div>
+    </section>
+
+
+
+    <section class="entry" style="background-color: var(--wsc-color);">
+ <img src="file:///home/joe/Desktop/wsc.svg" class="client_logo">
+<div class="wsc img" style="background-image: url('https://i.ibb.co/fGL9mdmZ/wsc1.png'); height: 400px; background-size: 100%; background-position: center; background-repeat: no-repeat;"></div>
+      <div class="desc"><h2>Fuel the fandom</h2>
+      <p class="strapline">Repositioned sports automation around keeping fans connected to the moments that matter.</p>
+        <hr>
+      <p class="meta"><span class="company">[WSC Sports: Sports Media]</span> | <span class="tag">[Narrative]</span> <span class="tag">[Messaging]</span> <span class="tag">[Brand]</span></p></div>
+    </section>
+
+    <section class="entry" style="background-color: var(--vulcan-color);">
+<img src="file:///home/joe/Desktop/vulcan.svg" class="client_logo">
+<div class="vulcan img" style="background-image: url('file:///home/joe/Desktop/vulc.png'); height: 400px; background-size: 100%; background-position: center; background-repeat: no-repeat;"></div>
+      <div class='desc'><h2>Fix strong and prosper</h2>
+      <p class="strapline">Shifted vulnerability management from finding problems to actually fixing them.</p>
+           <hr>
+      <p class="meta"><span class="company">[Vulcan: Cybersecurity]</span> | <span class="tag">[Positioning]</span> <span class="tag">[Web copy]</span> <span class="tag">[Employer brand]</span></p>
+</div>
+    </section>
+
+
+
+    <section class="entry" style="background-color: var(--overwolf-color); color: white;">
+<img src="file:///home/joe/Desktop/overwolf.svg" class="client_logo small">
+<div class="overwolf img" style="background-image: url('https://i.ibb.co/99T8m55L/Screenshot-2026-05-06-13-36-57.png'); height: 400px; background-size: 110%; background-position: center;  background-repeat: no-repeat;"></div>
+      <div class='desc'><h2>Up the game</h2>
+      <p class="strapline">Positioned gaming creators and modders as the engine behind modern game communities.</p>
+        <hr>
+      <p class="meta"><span class="company">[Overwolf: Gaming Platform]</span> | <span class="tag">[Messaging]</span> <span class="tag">[Community]</span> <span class="tag">[Web copy]</span></p></div>
+    </section>
+
+
+
+    <section class="entry" style="background-color: var(--sw-color); color: white;">
+ <img src="file:///home/joe/Desktop/sw.svg" class="client_logo">
+<div class="sw img" style="background-image: url('https://i.ibb.co/zjk7RrL/similar-engine.png'); height: 400px; background-position: bottom; background-size: 120%; background-repeat: no-repeat;"></div>
+<div class='desc'>
+      <h2>Great data. And lots of it.</h2>
+      <p class="strapline">Turned internet-scale data collection into a story about market visibility and competitive advantage.</p>
+<hr>
+      <p class="meta"><span class="company">[Similarweb: Data &amp; Analytics]</span> | <span class="tag">[Positioning]</span> <span class="tag">[Data/Infrastructure]</span> <span class="tag">[Web copy]</span></p></div>
+    </section>
+
+    <section class="entry">
+      <h2>Relax. IT’s taken care of.</h2>
+      <p class="strapline">Made IT automation feel simple, human, and reassuring instead of technical and corporate.</p>
+      <p class="meta"><span class="company">[SysAid: ITSM]</span> | <span class="tag">[Brand voice]</span> <span class="tag">[Web copy]</span></p>
+    </section>
+
+    <section class="entry">
+      <h2>Move like a startup. Work like an enterprise.</h2>
+      <p class="strapline">Framed workforce mobility as a new way for organizations to operate and grow.</p>
+      <p class="meta"><span class="company">[Gloat: HR Tech]</span> | <span class="tag">[Narrative]</span> <span class="tag">[Future of work]</span> <span class="tag">[Web copy]</span></p>
+    </section>
+
+    <section class="entry">
+      <h2>Save drivers. Drive savings.</h2>
+      <p class="strapline">Unified driver safety and insurance savings into a single clear story.</p>
+      <p class="meta"><span class="company">[MDGO: Insurtech]</span> | <span class="tag">[Positioning]</span> <span class="tag">[Tagline]</span> <span class="tag">[Web copy]</span></p>
+    </section>
+
+    <section class="entry">
+      <h2>Change with confidence.</h2>
+      <p class="strapline">Simplified enterprise change management into a story about visibility and foresight.</p>
+      <p class="meta"><span class="company">[Panaya: Enterprise Software]</span> | <span class="tag">[Messaging]</span> <span class="tag">[Web copy]</span></p>
+    </section>
+
+    <section class="entry">
+      <h2>Retail has a new trick up its sleeve.</h2>
+      <p class="strapline">Made connected retail feel tangible, accessible, and built into the physical store itself.</p>
+      <p class="meta"><span class="company">[Nexite: Retail Technology]</span> | <span class="tag">[Narrative]</span> <span class="tag">[Launch messaging]</span></p>
+    </section>
+  </main>
+</body>
+</html> -->
